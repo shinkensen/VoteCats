@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node Backend/backend.js"
+    "start": "node backend.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.56.0",
