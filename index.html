@@ -8,11 +8,24 @@
     <link rel="stylesheet" href="styling.css">
     <script type="module" src="script.js"></script>
     </head>
-    <body>
+    <body style="background-color:black;margin:0">
         <div>
-            <h1>Neko</h1>
+            <h1 class="stuff" style="color:white;font-size:3em;text-align:center;background-color:rgb(20,20,20);margin:0;padding:20px;">
+                Welcome to VoteCats!
+            </h1>
+        </div>
+        <div style="display:flex;margin-top:35px;margin-left: 30px;">
+            <div style="border:3px solid white; padding:30px;border-radius:50px">
+                <img src="/images/sillycat.png" alt="Silly Cat" style="width:350px;border-radius:50px">
+                <div style="display: flex;">
+                <svg xmlns="http://www.w3.org/2000/svg" id="cat0up" viewBox="0 0 640 640" fill="rgb(0,150,0)" style="width: 70px;"><path d="M160 416C147.1 416 135.4 408.2 130.4 396.2C125.4 384.2 128.2 370.5 137.4 361.4L297.4 201.4C309.9 188.9 330.2 188.9 342.7 201.4L502.7 361.4C511.9 370.6 514.6 384.3 509.6 396.3C504.6 408.3 492.9 416 480 416L160 416z"/></svg>
+                <h1 style="color: white;width:fit-content;display:flex;margin:0 auto;padding-top:10px" class="stuff">Silly Cat</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" id="cat0down"viewBox="0 0 640 640"fill="rgb(150,0,0)" style="width: 70px;margin-top:-10"><path d="M480 224C492.9 224 504.6 231.8 509.6 243.8C514.6 255.8 511.8 269.5 502.7 278.7L342.7 438.7C330.2 451.2 309.9 451.2 297.4 438.7L137.4 278.7C128.2 269.5 125.5 255.8 130.5 243.8C135.5 231.8 147.1 224 160 224L480 224z"/></svg>
+                </div>
+                <h1 id="cat1"style="color: rgb(9, 184, 67);width:fit-content;display:flex;margin:0 auto;" class="stuff">
+                    Votes: ~
+                </h1>
+            </div>
         </div>
     </body>
 </html>
-
-\
