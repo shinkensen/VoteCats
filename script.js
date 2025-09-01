@@ -169,3 +169,4 @@ function ubanner(){
 }
 ubanner();
 const timer = setInterval(ubanner,1000);
+console.log("Man, if ur seeing this, you are one hell of a bum. stop hopping on chrome dev! Freak! Also, if ur reading this, vote for rich cat and you will gain aura (young black and rich)")
