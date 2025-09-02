@@ -1,6 +1,5 @@
 
-let up=[false,false,false,false,false,false];
-let down=[false,false,false,false,false,false]
+let voted=[false,false,false,false,false,false];
 const ups=[document.getElementById("cat0up"),
     document.getElementById("cat1up"),
     document.getElementById("cat2up"),
@@ -35,12 +34,10 @@ async function numvotes(catid){
     return votes.vote;
 }
 const downer = async function(down0,up0,display1,num,index){
-    if (busy) return;
-    try{
-    if (!down[index]&&!up[index]){
+    if (!voted[index]){
     down0.style.fill='rgb(255,50,50)';
     up0.style.fill='rgb(0,150,0)';
-    down[index]=true;
+    voted[index]=true;
     const currentVote= await numvotes(num);
     const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
         method: 'POST',
@@ -50,48 +47,14 @@ const downer = async function(down0,up0,display1,num,index){
     const votes=await res.json();
     display1.textContent="Votes: " + votes.vote;
     console.log(votes);
-    }
-    else if(!down[index]&&up[index]){
-    down0.style.fill='rgb(255,50,50)';
-    up0.style.fill='rgb(0,150,0)';
-    down[index]=true;
-    up[index]=false;
-    const currentVote= await numvotes(num);
-    const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vote: currentVote - 2 })
-    });
-    const votes=await res.json();
-    display1.textContent="Votes: " + votes.vote;
-    console.log(votes);
-    }
-    else{
-    down0.style.fill='rgb(150,0,0)';
-    up[index]=false;
-    down[index]=false;
-    const currentVote= await numvotes(num);
-    const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vote: currentVote + 1 })
-    });
-    const votes=await res.json();
-    display1.textContent="Votes: " + votes.vote;
-    console.log(votes);
-    }}
-    finally{
-        busy=false;
-    }
+}
 }
 let busy=false;
 const upper = async function(up0,down0,display1,num,index){
-    if (busy) return;
-    try{
-    if (!up[index]&&!down[index]){
+    if (!voted[index]){
     up0.style.fill='rgb(50,255,50)';
     down0.style.fill='rgb(150,0,0)';
-    up[index]=true;
+    voted[index]=true;
     const currentVote= await numvotes(num);
     const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
         method: 'POST',
@@ -101,43 +64,6 @@ const upper = async function(up0,down0,display1,num,index){
     const votes=await res.json();
     display1.textContent="Votes: " + votes.vote;
     console.log(votes);
-    }
-
-
-
-    else if (!up[index]&&down[index]){
-    up0.style.fill='rgb(50,255,50)';
-    down0.style.fill='rgb(150,0,0)';
-    up[index]=true;
-    down[index]=false;
-    const currentVote= await numvotes(num);
-    const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vote: currentVote + 2 })
-    });
-    const votes=await res.json();
-    display1.textContent="Votes: " + votes.vote;
-    console.log(votes);
-    }
-
-
-    else{
-    up0.style.fill='rgb(0,150,0)';
-    up[index]=false;
-    down[index]=false;
-    const currentVote= await numvotes(num);
-    const res=await fetch(`https://votecats.onrender.com/votes/${num}`,{
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vote: currentVote - 1 })
-    });
-    const votes=await res.json();
-    display1.textContent="Votes: " + votes.vote;
-    console.log(votes);
-    }}
-    finally{
-        busy=false;
     }
 }
 for (let i=0;i<ups.length;i++){
